@@ -2,11 +2,16 @@
 
 namespace App\Services;
 
+use App\Models\Board;
+use Illuminate\Support\Facades\Log;
+
 class BoardService extends BaseService
 {
-    public function __construct()
-    {
+    private $board;
 
+    public function __construct(Board $board)
+    {
+        $this->board = $board;
     }
 
     public function searchBoards(array $params = [])
@@ -14,5 +19,13 @@ class BoardService extends BaseService
         return [
             'boards' => auth()->user()->boards
         ];
+    }
+
+    public function createBoard(array $params = [])
+    {
+        $user_id = auth()->user()->id;
+        $s =['user_id'=>$user_id, ...$params];
+        Log::info($s);
+        return $this->board->query()->create(['user_id'=>$user_id, ...$params]);
     }
 }

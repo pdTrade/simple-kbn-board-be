@@ -23,3 +23,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::get('/boards', [BoardController::class, 'index']);
+Route::post('/boards', [BoardController::class, 'store']);
