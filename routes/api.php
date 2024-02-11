@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\CardController;
 
 
 /*
@@ -24,3 +25,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 Route::get('/boards', [BoardController::class, 'index']);
 Route::post('/boards', [BoardController::class, 'store']);
+
+Route::post('/cards', [CardController::class, 'store']);
+

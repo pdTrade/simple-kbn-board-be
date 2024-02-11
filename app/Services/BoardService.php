@@ -17,15 +17,14 @@ class BoardService extends BaseService
     public function searchBoards(array $params = [])
     {
         return [
-            'boards' => auth()->user()->boards
+            'boards' => auth()->user()->boards ?? []
         ];
     }
 
     public function createBoard(array $params = [])
     {
-        $user_id = auth()->user()->id;
-        $s =['user_id'=>$user_id, ...$params];
-        Log::info($s);
+        $user_id = auth()->user()->id ?? 1;
+
         return $this->board->query()->create(['user_id'=>$user_id, ...$params]);
     }
 }
