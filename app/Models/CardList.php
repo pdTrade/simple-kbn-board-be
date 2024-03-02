@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Board extends Model
+class CardList extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'board_id',
         'name',
     ];
 
 
-    public function user()
+    public function cards()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function cardLists()
-    {
-        return $this->hasMany(CardList::class);
+        return $this->hasMany(Card::class);
     }
 }

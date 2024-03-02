@@ -21,7 +21,7 @@ class CardService extends BaseService
 
     public function createCard(array $params = [])
     {
-        $user_id = auth()->user()->id ?? 1;
+        $user_id = auth()->user()->id ?? null;
 
 
         return $this->card->query()->create(['user_id'=>$user_id, ...$params]);

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CardRequest;
-use App\Services\CardService;
+use App\Http\Requests\CardListRequest;
+use App\Services\CardListService;
 use Illuminate\Http\Request;
 
-class CardController extends Controller
+class CardListController extends Controller
 {
-    private $card_service;
+    private $card_list_service;
 
-    public function __construct(Cardservice $card_service)
+    public function __construct(CardListService $card_list_service)
     {
-        $this->card_service = $card_service;
+        $this->card_list_service = $card_list_service;
     }
 
     /**
@@ -20,7 +20,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return $this->card_service->searchCards();
+        return $this->card_list_service->searchList();
     }
 
     /**
@@ -34,10 +34,11 @@ class CardController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CardRequest $request)
+    public function store(CardListRequest $request)
     {
 
-        return $this->card_service->createCard($request->validated());
+
+        return $this->card_list_service->createList($request->validated());
     }
 
     /**

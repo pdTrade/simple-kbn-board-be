@@ -23,7 +23,7 @@ class BoardService extends BaseService
 
     public function createBoard(array $params = [])
     {
-        $user_id = auth()->user()->id ?? 1;
+        $user_id = auth()->user()->id ?? null;
 
         return $this->board->query()->create(['user_id'=>$user_id, ...$params]);
     }

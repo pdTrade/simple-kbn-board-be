@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CardRequest extends FormRequest
+class CardListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class CardRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'card_list_id' => ['required'],
+            'board_id' => ['required'],
         ];
     }
 }
